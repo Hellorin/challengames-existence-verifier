@@ -1,0 +1,21 @@
+<html>
+	<body>
+		<table class="gridtable">
+			<tr>
+				<th>Searched game</th>
+				<th>Found a match</th>
+				<th>Matches</th>
+			</tr>
+			#foreach ($game in $games)
+			<tr>
+				<td>$game.name</td>
+				#if ($game.matches.size() > 0)
+				<td>X</td>
+				#else
+				<td></td>
+				#end
+				<td>$game.matches</td>
+			#end
+		</table>
+	</body>
+</html>
