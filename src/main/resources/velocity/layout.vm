@@ -60,6 +60,8 @@
             for (i = 0; i < array.length; i++) {
                 array[i].parentElement.removeChild(array[i])
             }
+
+            document.getElementById("filteringBadge").hidden = true
         }
     </script>
 </head>
