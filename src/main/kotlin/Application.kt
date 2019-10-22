@@ -1,10 +1,11 @@
 import app.games.GamesController
 import app.index.IndexController
 import app.util.Paths
-import spark.Spark.get
-import spark.Spark.post
+import spark.Spark.*
 
 fun main() {
+
+    staticFiles.location("/public")
 
     val indexController = IndexController()
     val gamesController = GamesController()

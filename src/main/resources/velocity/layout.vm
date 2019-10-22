@@ -1,0 +1,82 @@
+#macro(mainLayout)
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script>
+        function bs_input_file() {
+            $(".input-file").before(
+                    function () {
+                        if (!$(this).prev().hasClass('input-ghost')) {
+                            var element = $("<input accept='.csv' type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+                            element.attr("name", $(this).attr("name"));
+                            element.change(function () {
+                                element.next(element).find('input').val((element.val()).split('\\').pop());
+                            });
+                            $(this).find("button.btn-choose").click(function () {
+                                element.click();
+                            });
+                            $(this).find("button.btn-reset").click(function () {
+                                element.val(null);
+                                $(this).parents(".input-group").find('input').val('');
+                            });
+                            $(this).find('input').css("cursor", "pointer");
+                            $(this).find('input').mousedown(function () {
+                                $(this).parents('.input-file').prev().click();
+                                return false;
+                            });
+                            return element;
+                        }
+                    }
+            );
+        }
+
+        $(function () {
+            bs_input_file();
+        });
+
+        function filterList() {
+            var elements = document.getElementsByClassName("matchData")
+
+            var array = []
+            for (i = 0; i < elements.length; i++) {
+                var potentialText = elements[i].childNodes[0]
+                if (potentialText instanceof Text) {
+                    var row = potentialText.parentElement.parentElement;
+                    array.push(row)
+                }
+            }
+
+            for (i = 0; i < array.length; i++) {
+                array[i].parentElement.removeChild(array[i])
+            }
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">(Challen)games - <i>existence verifier</i></a>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div id="content" class="container">
+    $bodyContent
+</div>
+
+</body>
+</html>
+#end

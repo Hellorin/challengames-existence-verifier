@@ -1,21 +1,77 @@
-<html>
-	<body>
-		<table class="gridtable">
-			<tr>
-				<th>Searched game</th>
-				<th>Found a match</th>
-				<th>Matches</th>
-			</tr>
-			#foreach ($game in $games)
-			<tr>
-				<td>$game.name</td>
-				#if ($game.matches.size() > 0)
-				<td>X</td>
-				#else
-				<td></td>
-				#end
-				<td>$game.matches</td>
-			#end
-		</table>
-	</body>
-</html>
+#parse("/velocity/layout.vm")
+#@mainLayout()
+	
+	<div class="container">		
+		<div class="row">
+			<div class="col-12">
+				</p>
+					<h3>Stats</h3>
+					<ul class="list-group">
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Matching elements
+							<span class="badge badge-success badge-pill">$results.getNumberOfMatch()</span>
+						</li>
+					  
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Multiple matches
+							<span class="badge badge-warning badge-pill">$results.getNumberOfMultipleMatch()</span>
+						</li>
+					  
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Not matching elements
+							<span class="badge badge-danger badge-pill">$results.getNumberOfNotMatch()</span>
+						</li>
+					</ul>
+				</p>
+        	</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<br\>
+				<h3>Results</h3>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>Searched game</th>
+							<th>Found Matches</th>
+						</tr>
+					</thead>
+					<tbody id="listResultsGame">
+						#foreach ($game in $results.gameResults)
+						<tr class=" 
+							#if ($game.matches.size() == 1)
+								table-success
+							#else
+								#if ($game.matches.size() > 1)
+									table-warning
+								#else 
+									table-danger
+								#end
+							#end
+							">
+							<td>$game.name</td>
+							
+							#if ($game.matches.size() > 0)
+								<td class="matchData">$game.getMatchesString()</td>
+							#else
+								<td class="matchData"><i>-</i></td>
+							#end
+						</tr>
+						#end
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<p>
+					<span id="filteringBadge" onClick="filterList()" class="badge badge-danger badge-pill">Filter to see only elements that has got no matches</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<span class="glyphicon glyphicon-home"><a href="/"></span>Return to homepage</a>
+		</div>
+	</div>
+
+#end

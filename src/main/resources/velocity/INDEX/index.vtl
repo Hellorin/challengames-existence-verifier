@@ -1,0 +1,77 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+	<br\>
+	<div class="row">
+		<div class="col-12">
+			<h3>Description</h3>
+			<p>
+				This tool can be used to determine for a specific game or a list of game, if the latter exists in the
+				<a href="https://www.igdb.com/">IGDB</a> v3 database.
+			</p>
+			
+		</div>
+	</div> 
+	<hr/>
+	<div class="row">
+		<div class="col-12 .bg-light">
+            <h3>Upload a csv file</h3>
+			<form method="POST" action="/games" enctype="multipart/form-data">
+				<!-- COMPONENT START -->
+				<div class="form-group">
+					<div class="input-group input-file" name="uploaded_file">
+						<span class="input-group-btn">
+							<button class="btn btn-default btn-choose" type="button">Choose</button>
+						</span>
+						<input type="text" class="form-control" placeholder='Choose a file...' />
+						<span class="input-group-btn">
+							 <button class="btn btn-warning btn-reset" type="button">Reset</button>
+						</span>
+					</div>
+				</div>
+				<!-- COMPONENT END -->
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary pull-right">Submit</button>
+				</div>
+			</form>
+			<!--<form class="form-inline">
+			<div class="form-group mb-6">
+			<h3>
+				<label>Upload a csv file:   </label>
+			</h3>
+			</div>
+			  <div class="form-group mb-2">
+				
+				<input type='file' class="form-control-file" name='uploaded_file' accept='.csv'>
+			  </div>
+			  <button type="submit" class="btn btn-primary" mb-2>Upload csv</button>
+			</form>-->
+		</div>
+	</div>
+	<div class="row">
+		<div class="container">
+			<div class="d-flex justify-content-center mb-3">
+                <div align="center" class="p-2"><h3 class="circle">OR</h3></div>
+              </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<h3>For one game </h3>
+			<form method="POST" action="/game" enctype="multipart/form-data">
+				<!-- COMPONENT START -->
+				<div class="form-group">
+					<div class="input-group" name="game">
+						<input type="text" id="btResetGame" name="game" class="form-control" placeholder='Pick a game...' />
+						<span class="input-group-btn">
+							 <button onClick="document.getElementById('btResetGame').value = ''" class="btn btn-warning btn-reset" type="button">Reset</button>
+						</span>
+					</div>
+				</div>
+				<!-- COMPONENT END -->
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary pull-right">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+#end

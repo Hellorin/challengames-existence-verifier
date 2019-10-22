@@ -1,0 +1,24 @@
+
+.circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    font-size: 30px;
+    line-height: 75px;
+    text-align: center;
+    color: white;
+    background: #2E7D32;
+}
+
+.navbar-default {
+    color: #FFFFFF;
+    background-color: #2E7D32;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: white;
+}

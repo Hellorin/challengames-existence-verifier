@@ -10,7 +10,7 @@ import javax.servlet.MultipartConfigElement
 class GamesController {
     private val templatePath: String = "/velocity/GAMES/games.vtl"
 
-    private val templateGameRequestData = "games"
+    private val templateGameRequestData = "results"
 
     private val gameProvider: GameProvider = GameProvider()
 
@@ -30,13 +30,13 @@ class GamesController {
         val gameName = extractSingleGameDataFromRequest(request)
 
         // Get information from external API
-        val gameResult = gameProvider.getGame(gameName)
+        val gameResults = gameProvider.getGame(gameName)
 
         // Build model and render
-        return buildModelAndRender(request, listOf(gameResult), response)
+        return buildModelAndRender(request, gameResults, response)
     }
 
-    private fun buildModelAndRender(request: Request, gameResult: List<GameResult>, response: Response): String {
+    private fun buildModelAndRender(request: Request, gameResult: SetGameResult, response: Response): String {
         // Build model with extracted data
         val model = mutableMapOf<String, Any>(
                 Pair(
