@@ -3,7 +3,16 @@ import app.index.IndexController
 import app.util.Paths
 import spark.Spark.*
 
-fun main() {
+fun getHerokuAssignedPort() : Int {
+    val processBuilder = ProcessBuilder()
+    if (processBuilder.environment()["PORT"] != null) {
+        return Integer.parseInt(processBuilder.environment()["PORT"])
+    }
+    return 4567
+}
+
+fun main(args: Array<String>) {
+    port(getHerokuAssignedPort())
 
     staticFiles.location("/public")
 
