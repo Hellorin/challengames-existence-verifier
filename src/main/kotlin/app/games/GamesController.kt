@@ -19,7 +19,7 @@ class GamesController {
         val gameNames = extractMultipleGameDataFromRequest(request)
 
         // Get information from external API
-        val gameResults = gameProvider.getGames(gameNames)
+        val gameResults = gameProvider.getGamesResult(gameNames)
 
         // Build model with extracted data
         return buildModelAndRender(request, gameResults, response)
@@ -30,7 +30,7 @@ class GamesController {
         val gameName = extractSingleGameDataFromRequest(request)
 
         // Get information from external API
-        val gameResults = gameProvider.getGame(gameName)
+        val gameResults = gameProvider.getGameResult(gameName)
 
         // Build model and render
         return buildModelAndRender(request, gameResults, response)
