@@ -6,9 +6,9 @@ Small tool used to determine if a given game, defined by its name, exists in the
 ## Current status
 Soon to be production ready.
 
-A development version of this small tool is available at https://games-existence-verifier.herokuapp.com/.
+A development version of this small tool will be available at https://games-existence-verifier.herokuapp.com/.
 
-It is deployed with Heroku using its free tier. It can take some time to load initially since heroku puts app to sleep when not used. Just be patient ;)
+It will be deployed with Heroku using its free tier. It can take some time to load initially since Heroku puts app to sleep when not used. Just be patient ;)
 
 ## Technologies
   - Kotlin 1.3.x
