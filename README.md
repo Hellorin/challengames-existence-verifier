@@ -11,10 +11,10 @@ A development version of this small tool will be available at https://games-exis
 It will be deployed with Heroku using its free tier. It can take some time to load initially since Heroku puts app to sleep when not used. Just be patient ;)
 
 ## Technologies
-  - Kotlin 1.3.x
-  - Spark-java 2.3
-  - khttp 0.1.0
-  - gson 2.8.6
+  - Kotlin (1.3.x);
+  - Spark-java (2.3);
+  - khttp (0.1.0);
+  - gson (2.8.6)
 
 ## External APIS
 - igdb (v3)
