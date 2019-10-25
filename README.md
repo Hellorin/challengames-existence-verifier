@@ -1,4 +1,4 @@
-# (challeng)ames-existence-verifier
+# (challen)games-existence-verifier
 
 ## Description
 Small tool used to determine if a given game, defined by its name, exists in the API used by the challengames app.
